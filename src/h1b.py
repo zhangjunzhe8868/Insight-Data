@@ -14,7 +14,7 @@ job_arr=[]
 state_per1=[]
 job_per1=[]
 #with open ('H1B_FY_2016.csv',newline='',encoding="utf8") as csvfile:
-with open ('H1B_FY_2016.csv') as csvfile:
+with open ('./src/H1B_FY_2016.csv') as csvfile:
     reader=csv.reader(csvfile,delimiter=';',quotechar='|')
     row1=next(reader)
     for i in range (len(row1)):
