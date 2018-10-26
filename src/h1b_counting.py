@@ -59,14 +59,6 @@ state_output1=list(map(list, zip(*state_output)))
 job_output=[job_str,job_arr,job_per1]
 job_output1=list(map(list, zip(*job_output)))
 
-output = open('./output/top_10_states.txt','w')
-output.write('TOP_STATES;NUMBER_CERTIFIED_APPLICATIONS;PERCENTAGE\n')
-for row in state_output1:
-    rowtxt = '{};{};{}'.format(row[0],row[1],row[2])
-    output.write(rowtxt)
-    output.write('\n')
-output.close()
-            
 output = open('./output/top_10_occupations.txt','w')
 output.write('TOP_OCCUPATIONS;NUMBER_CERTIFIED_APPLICATIONS;PERCENTAGE\n')
 for row in job_output1:
@@ -75,6 +67,16 @@ for row in job_output1:
     output.write('\n')
 output.close()
             
+
+output = open('./output/top_10_states.txt','w')
+output.write('TOP_STATES;NUMBER_CERTIFIED_APPLICATIONS;PERCENTAGE\n')
+for row in state_output1:
+    rowtxt = '{};{};{}'.format(row[0],row[1],row[2])
+    output.write(rowtxt)
+    output.write('\n')
+output.close()
+            
+
     
 
         
