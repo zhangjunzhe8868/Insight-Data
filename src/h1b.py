@@ -20,7 +20,7 @@ with open ('./input/H1B_FY_2016.csv') as csvfile:
     for i in range (len(row1)):
         if row1[i].find('SOC_NAME')!=-1:
             job_title=i
-        if row1[i].find('EMPLOYER_STATE')!=-1:
+        if row1[i].find('WORKSITE_STATE')!=-1:
             employ_state=i
    
     for row in reader:
