@@ -20,9 +20,9 @@ with open ('./input/test.csv') as csvfile:
     for i in range (len(row1)):
         if row1[i].find('SOC_NAME')!=-1:
             job_title=i
-        if row1[i].find('WORKSITE_STATE')!=-1:
+        if row1[i].find('_STATE')!=-1 and row1[i].find('WORK')!=-1:
             employ_state=i
-   
+        break  
     for row in reader:
         count+=1
         if row[2]=='CERTIFIED':
