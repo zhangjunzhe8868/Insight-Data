@@ -22,7 +22,7 @@ with open ('./input/test.csv') as csvfile:
             job_title=i
         if row1[i].find('_STATE')!=-1 and row1[i].find('WORK')!=-1:
             employ_state=i
-        break  
+            break  
     for row in reader:
         count+=1
         if row[2]=='CERTIFIED':
