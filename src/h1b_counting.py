@@ -49,11 +49,11 @@ for i in range (len(job_list)):
     job_str[i]=re.sub("\"", "",job_str[i])
 
 for i in range(len(state_list)):
-    temp=format(state_per[i],'.1%')
+    temp=format(state_per[i],'3.1%')
     state_per1.append(temp)
 
 for i in range(len(job_list)):
-    temp=format(job_per[i],'.1%')
+    temp=format(job_per[i],'3.1%')
     job_per1.append(temp)
 
 state_output=[state_str,state_arr,state_per1]
