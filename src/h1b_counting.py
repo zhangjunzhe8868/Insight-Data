@@ -13,7 +13,7 @@ job_str=[]
 job_arr=[]
 state_per1=[]
 job_per1=[]
-#with open ('Book1.csv',newline='',encoding="utf8") as csvfile:
+
 with open ('./input/h1b_input.csv') as csvfile:
     reader=csv.reader(csvfile,delimiter=';',quotechar='|')
     row1=next(reader)
@@ -45,6 +45,9 @@ for i in range (len(job_list)):
     job_arr.append(job_list[i][1])   
 job_per=list(map(lambda i:i/count1,job_arr))
 
+for i in range (len(job_list)):
+    job_str[i]=re.sub("\"", "",job_str[i])
+
 for i in range(len(state_list)):
     temp=format(state_per[i],'.1%')
     state_per1.append(temp)
@@ -59,9 +62,12 @@ state_output1=list(map(list, zip(*state_output)))
 job_output=[job_str,job_arr,job_per1]
 job_output1=list(map(list, zip(*job_output)))
 
+state_output2=sorted(state_output1,key=lambda state_output1:(-state_output1[1],state_output1[0]))
+job_output2=sorted(job_output1,key=lambda job_output1:(-job_output1[1],job_output1[0]))
+
 output = open('./output/top_10_occupations.txt','w')
 output.write('TOP_OCCUPATIONS;NUMBER_CERTIFIED_APPLICATIONS;PERCENTAGE\n')
-for row in job_output1:
+for row in job_output2:
     rowtxt = '{};{};{}'.format(row[0],row[1],row[2])
     output.write(rowtxt)
     output.write('\n')
@@ -70,7 +76,7 @@ output.close()
 
 output = open('./output/top_10_states.txt','w')
 output.write('TOP_STATES;NUMBER_CERTIFIED_APPLICATIONS;PERCENTAGE\n')
-for row in state_output1:
+for row in state_output2:
     rowtxt = '{};{};{}'.format(row[0],row[1],row[2])
     output.write(rowtxt)
     output.write('\n')
