@@ -15,9 +15,9 @@ job_arr=[]
 state_per1=[]
 job_per1=[]
 sysIn=sys.argv
-print(sysIn)
+
 ##read csv
-with open (sys.argv[1],'r') as csvfile:
+with open ('./input/h1b_input.csv','r') as csvfile:
     reader=csv.reader(csvfile,delimiter=';',quotechar='|')
     row1=next(reader)
 	##find the titles of job and state 
@@ -35,9 +35,7 @@ with open (sys.argv[1],'r') as csvfile:
             job.extend([row[job_title]])
         else:
             count2+=1
-print(sys.argv[1])
-print(sys.argv[2])
-print(sys.argv[3])
+
 ##find the top ten most job and state            
 state_list=Counter(state).most_common(10)
 job_list=Counter(job).most_common(10)
@@ -77,10 +75,8 @@ job_output1=list(map(list, zip(*job_output)))
 state_output2=sorted(state_output1,key=lambda state_output1:(-state_output1[1],state_output1[0]))
 job_output2=sorted(job_output1,key=lambda job_output1:(-job_output1[1],job_output1[0]))
 
-print(state_output2)
-print(job_output2)
 ##output the result
-output = open(sys.argv[2],'w')
+output = open('./output/top_10_occupations.txt','w')
 output.write('TOP_OCCUPATIONS;NUMBER_CERTIFIED_APPLICATIONS;PERCENTAGE\n')
 for row in job_output2:
     rowtxt = '{};{};{}'.format(row[0],row[1],row[2])
@@ -88,7 +84,7 @@ for row in job_output2:
     output.write('\n')
 output.close()          
 
-output = open(sys.argv[3],'w')
+output = open('./output/top_10_states.txt','w')
 output.write('TOP_STATES;NUMBER_CERTIFIED_APPLICATIONS;PERCENTAGE\n')
 for row in state_output2:
     rowtxt = '{};{};{}'.format(row[0],row[1],row[2])
