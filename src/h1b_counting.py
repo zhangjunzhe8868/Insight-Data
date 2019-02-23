@@ -1,4 +1,5 @@
 #!/usr/local/bin/python
+import sys
 import re
 import csv
 from collections import Counter
@@ -13,9 +14,10 @@ job_str=[]
 job_arr=[]
 state_per1=[]
 job_per1=[]
+sysIn=sys.argv
 
 ##read csv
-with open ('./input/h1b_input.csv') as csvfile:
+with open (sys.argv[1],'r') as csvfile:
     reader=csv.reader(csvfile,delimiter=';',quotechar='|')
     row1=next(reader)
 	##find the titles of job and state 
@@ -74,7 +76,7 @@ state_output2=sorted(state_output1,key=lambda state_output1:(-state_output1[1],s
 job_output2=sorted(job_output1,key=lambda job_output1:(-job_output1[1],job_output1[0]))
 
 ##output the result
-output = open('./output/top_10_occupations.txt','w')
+output = open(sys.argv[2],'w')
 output.write('TOP_OCCUPATIONS;NUMBER_CERTIFIED_APPLICATIONS;PERCENTAGE\n')
 for row in job_output2:
     rowtxt = '{};{};{}'.format(row[0],row[1],row[2])
@@ -82,7 +84,7 @@ for row in job_output2:
     output.write('\n')
 output.close()          
 
-output = open('./output/top_10_states.txt','w')
+output = open(sys.argv[3],'w')
 output.write('TOP_STATES;NUMBER_CERTIFIED_APPLICATIONS;PERCENTAGE\n')
 for row in state_output2:
     rowtxt = '{};{};{}'.format(row[0],row[1],row[2])
