@@ -35,7 +35,9 @@ with open (sys.argv[1],'r') as csvfile:
             job.extend([row[job_title]])
         else:
             count2+=1
-
+print(sys.argv[1])
+print(sys.argv[2])
+print(sys.argv[3])
 ##find the top ten most job and state            
 state_list=Counter(state).most_common(10)
 job_list=Counter(job).most_common(10)
