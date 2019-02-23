@@ -15,7 +15,7 @@ job_arr=[]
 state_per1=[]
 job_per1=[]
 sysIn=sys.argv
-
+print(sysIn)
 ##read csv
 with open (sys.argv[1],'r') as csvfile:
     reader=csv.reader(csvfile,delimiter=';',quotechar='|')
@@ -77,6 +77,8 @@ job_output1=list(map(list, zip(*job_output)))
 state_output2=sorted(state_output1,key=lambda state_output1:(-state_output1[1],state_output1[0]))
 job_output2=sorted(job_output1,key=lambda job_output1:(-job_output1[1],job_output1[0]))
 
+print(state_output2)
+print(job_output2)
 ##output the result
 output = open(sys.argv[2],'w')
 output.write('TOP_OCCUPATIONS;NUMBER_CERTIFIED_APPLICATIONS;PERCENTAGE\n')
